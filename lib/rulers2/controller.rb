@@ -1,4 +1,4 @@
-  require "erbuis"
+  require "erubis"
 
   module Rulers2
     class Controller
@@ -12,7 +12,8 @@
 
       def render(view_name, locals = {})
         filename = File.join "app", "views", "#{view_name}.html.erb"
-        template = Erubis::Eruby.new(template)
+        template = File.read filename
+        eruby = Erubis::Eruby.new(template)
         eruby.result locals.merge(:env => env)
       end
     end
