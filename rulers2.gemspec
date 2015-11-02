@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "rack-test"
   spec.add_development_dependency "test-unit"
+  spec.add_development_dependency "byebug"
   spec.add_runtime_dependency "rack"
   spec.add_runtime_dependency "erubis"
 
