@@ -1,4 +1,5 @@
 require "rulers2/array"
+require "rulers2/dependencies"
 require "rulers2/routing"
 require "rulers2/util"
 require "rulers2/version"
