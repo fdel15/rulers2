@@ -17,4 +17,9 @@ class RulersAppTest < Test::Unit::TestCase
     body = last_response.body
     assert body["Hello"]
   end
+
+  def test_array_sum
+    a = [1,2,3,4]
+    assert_equal a.sum, 10
+  end
 end
