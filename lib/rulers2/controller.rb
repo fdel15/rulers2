@@ -1,5 +1,4 @@
   require "erubis"
-
   module Rulers2
     class Controller
       def initialize(env)
@@ -14,7 +13,12 @@
         filename = File.join "app", "views", controller_name, "#{view_name}.html.erb"
         template = File.read filename
         eruby = Erubis::Eruby.new(template)
-        eruby.result locals.merge(:env => env)
+        eruby.result locals.merge(my_instance_variables)
+      end
+
+      def my_instance_variables(vars = {})
+        self.instance_variables.each{|v| vars[v] = self.instance_variable_get(v)}
+        vars
       end
 
       def controller_name
