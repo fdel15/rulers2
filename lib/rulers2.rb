@@ -1,6 +1,7 @@
 require "rulers2/array"
 require "rulers2/controller"
 require "rulers2/dependencies"
+require "rulers2/file_model"
 require "rulers2/routing"
 require "rulers2/util"
 require "rulers2/version"
