@@ -20,6 +20,15 @@ class RulersAppTest < Test::Unit::TestCase
 
   def test_array_sum
     a = [1,2,3,4]
+    b = ["hi", "bye"]
+
     assert_equal a.sum, 10
+    assert_equal a.sum(10), 20
+    assert_nil b.sum
+  end
+
+  def test_array_print
+    a = [1,2,3,4]
+    assert_equal a.print, "The sum of the elements is #{a.sum}"
   end
 end
