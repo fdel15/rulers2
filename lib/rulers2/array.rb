@@ -1,6 +1,10 @@
 class Array
   def sum(start = 0)
-    inject(start, &:+)
+    begin
+      inject(start, &:+)
+    rescue
+      return nil
+    end
   end
 
   def print
