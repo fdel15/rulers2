@@ -1,5 +1,5 @@
 require "rulers2/array"
-require "rulers/routing"
+require "rulers2/routing"
 require "rulers2/version"
 
 module Rulers2
