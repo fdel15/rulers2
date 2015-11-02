@@ -1,4 +1,5 @@
 require "rulers2/array"
+require "rulers2/controller"
 require "rulers2/dependencies"
 require "rulers2/routing"
 require "rulers2/util"
@@ -20,16 +21,6 @@ module Rulers2
         text = e.to_s.split("for").first + "for #{controller.class}"
         [500, {'Content-Type' => 'text/html'}, [text]]
       end
-    end
-  end
-
-  class Controller
-    def initialize(env)
-      @env = env
-    end
-
-    def env
-      @env
     end
   end
 end
