@@ -5,6 +5,7 @@ class Array
 
   def print
     self.each{|e| puts e}
+    return "The sum of the elements is #{self.sum}"
   end
 
 end
