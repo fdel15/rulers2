@@ -4,7 +4,6 @@ require "multi_json"
 module Rulers2
   module Model
     class FileModel
-      attr_reader :id
       def initialize(filename)
         @filename = filename
         basename = File.split(filename)[-1]
@@ -41,7 +40,7 @@ module Rulers2
       end
 
       def save
-        File.open("db/quotes/#{self.id}.json", "w") do |f|
+        File.open("db/quotes/#{@id}.json", "w") do |f|
           f.write <<-TEMPLATE
             {
             "submitter": "#{self["submitter"]}",
