@@ -1,5 +1,6 @@
   require "erubis"
   require "rulers2/file_model"
+  require "rack/request"
 
   module Rulers2
     class Controller
@@ -10,6 +11,14 @@
 
       def env
         @env
+      end
+
+      def request
+        @request ||= Rack::Request.new(@env)
+      end
+
+      def params
+        request.params
       end
 
       def render(view_name, locals = {})
