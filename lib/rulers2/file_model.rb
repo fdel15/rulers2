@@ -1,8 +1,10 @@
 require "multi_json"
 
+
 module Rulers2
   module Model
     class FileModel
+      attr_reader :id
       def initialize(filename)
         @filename = filename
         basename = File.split(filename)[-1]
@@ -27,9 +29,27 @@ module Rulers2
         end
       end
 
+      def self.find_all_by_submitter(submitter)
+        files = Dir["db/quotes/*.json"]
+        quotes = files.map{|f| FileModel.new f}
+        quotes.select{|q| q["submitter"] == submitter}
+      end
+
       def self.all
         files = Dir["db/quotes/*.json"]
         files.map {|f| FileModel.new f }
+      end
+
+      def save
+        File.open("db/quotes/#{self.id}.json", "w") do |f|
+          f.write <<-TEMPLATE
+            {
+            "submitter": "#{self["submitter"]}",
+            "quote": "#{self["quote"]}",
+            "attribution": "#{self["attribution"]}"
+          }
+          TEMPLATE
+        end
       end
 
       def self.create(attrs)
