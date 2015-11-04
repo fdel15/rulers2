@@ -99,6 +99,16 @@ module Rulers2
         self.save! rescue false
       end
 
+      def method_missing(method, *args)
+        raise "No such column or method #{method}" if self[method.to_s] == nil
+        MyTable.class_eval do
+          define_method(method) {
+            self[method.to_s]
+          }
+        end
+        self[method.to_s]
+      end
+
     end
   end
 end
