@@ -100,13 +100,18 @@ module Rulers2
       end
 
       def method_missing(method, *args)
-        raise "No such column or method #{method}" if self[method.to_s] == nil
-        MyTable.class_eval do
-          define_method(method) {
-            self[method.to_s]
+          getter = method.to_s.delete('=')
+        raise "No such column or method #{method}" if self[getter] == nil
+        self.class.class_eval do
+          setter = getter + '='
+          define_method(getter.to_sym) {
+            self[getter]
+          }
+          define_method(setter.to_sym) {
+            |val| self[getter] = val
           }
         end
-        self[method.to_s]
+        args.empty? ? self.send(method) : self[getter] = args.first
       end
 
     end
