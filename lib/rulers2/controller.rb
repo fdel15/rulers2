@@ -41,7 +41,7 @@
       end
 
       def render(*args)
-        response(get_view(*args))
+        get_view(*args)
       end
 
       def request
