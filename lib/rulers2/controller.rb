@@ -5,12 +5,29 @@
   module Rulers2
     class Controller
       include Rulers2::Model
+
       def initialize(env)
         @env = env
+        @routing_params = {}
       end
 
       def env
         @env
+      end
+
+      def dispatch(action, routing_params = {})
+        @routing_params = routing_params
+        text = self.send(action)
+        if get_response
+          st, hd, rs = get_response.to_a
+          [st, hd, [rs].flatten]
+        else
+          [200, { 'Content-Type' => 'text/html' }, [text].flatten]
+        end
+      end
+
+      def self.action(act, rp = {})
+        proc { |e| self.new(e).dispatch(act, rp) }
       end
 
       def response(text, status = 200, headers = {})
@@ -32,7 +49,7 @@
       end
 
       def params
-        request.params
+        request.params.merge @routing_params
       end
 
       def get_view(view_name, locals = {})
