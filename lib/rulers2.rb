@@ -12,9 +12,7 @@ module Rulers2
       if env['PATH_INFO'] == '/favicon.ico'
         return [404, {'Content-Type' => 'text/html'}, []]
       end
-
-      klass, act = get_controller_and_action(env)
-      rack_app = klass.action(act)
+      rack_app = get_rack_app(env)
       rack_app.call(env)
     end
   end
