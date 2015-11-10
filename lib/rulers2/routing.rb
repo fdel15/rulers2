@@ -29,7 +29,7 @@ class RouteObject
     end
     regexp = regex_parts.join("/")
     @rules.push({
-      :rexexp => Regexp.new("^/#{regexp}$"),
+      :regexp => Regexp.new("^/#{regexp}$"),
       :vars => vars,
       :dest => dest,
       :options => options
