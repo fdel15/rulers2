@@ -1,6 +1,8 @@
 # Rulers2
 
-TODO: Write a gem description
+A Ruby MVC framework built from the ground up. The purpose of this project was to understand the Rails framework better. This framework is designed to work a lot like rails, but much simpler. 
+
+Thank you to Noah Gibbs for writing the great book [Rebuilding Rails](http://rebuilding-rails.com/RebuildingRailsFree.pdf)
 
 ## Installation
 
@@ -18,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+I have used this framework to host a very simple app you can find [here](https://github.com/fdel15/best_quotes).
 
 ## Contributing
 
