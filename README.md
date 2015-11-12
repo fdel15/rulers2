@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-I have used this framework to host a very simple app you can find [here](https://github.com/fdel15/best_quotes).
+I have used this framework to build a very simple app you can find [here](https://github.com/fdel15/best_quotes).
 
 ## Contributing
 
